@@ -1,3 +1,4 @@
+package com.m2i.formation.media;
 import java.util.Date;
 
 public class Book {
@@ -11,6 +12,7 @@ public class Book {
 	private Publisher publisher;
 	private Author[] authors = new Author[10];
 	private int nbAuthors;
+	private BookCategory category;
 	
 	public String getTitle() {
 		return title;
@@ -68,17 +70,24 @@ public class Book {
 	
 	public void displayAuthors(){
 		System.out.println("Authors :");
-		/*
+		
 		for(int i = 0; i < this.nbAuthors;i++){
 			Author a = this.authors[i];
 			System.out.println(a.getFirstName() + " " + a.getLastName());
 		}
-		*/
+		
+		/*
 		for(Author a : this.authors){
 			if (a != null){
 			System.out.println(a.getFirstName() + " " + a.getLastName());
 			}
 		}
-		
+		*/
+	}
+	public BookCategory getCategory() {
+		return category;
+	}
+	public void setCategory(BookCategory category) {
+		this.category = category;
 	}
 }

@@ -1,3 +1,4 @@
+package com.m2i.formation.media;
 
 public class Publisher {
 	private int id;

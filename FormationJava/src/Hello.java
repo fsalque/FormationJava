@@ -1,5 +1,8 @@
 import java.util.Random;
 
+import com.m2i.formation.geometry.Counter;
+import com.m2i.formation.media.*;
+
 public class Hello {
 
 	public static void main(String[] args) {
@@ -175,6 +178,22 @@ public class Hello {
 		b2.addAuthor(a1);
 		b2.addAuthor(a2);
 		b2.displayAuthors();
+		//////////////////////////////////////////////////
+		// TP POO Static//////////////////////////////////
+		for (i = 0; i < 10; i++){
+			System.out.println(Counter.increment());
+		}
+		Counter c1 = new Counter();
+		Counter c2 = new Counter();
+		for (i = 0; i < 10; i++){
+			System.out.println(c1.increment());
+		}
+		for (i = 0; i < 10; i++){
+			System.out.println(c2.increment());
+		}
+		//////////////////////////////////////////////////
+		// TP POO Enum//////////////////////////////////
+		b1.setCategory(BookCategory.SF);
 		//////////////////////////////////////////////////
 	}
 
