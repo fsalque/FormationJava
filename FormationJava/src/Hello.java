@@ -147,6 +147,35 @@ public class Hello {
 		display(bubbleSort(tab2));
 		display(selectionSort(tab2));
 		//////////////////////////////////////////////////
+		
+		// TP 1 POO //////////////////////////////////////
+		Book b1 = new Book();
+		b1.setTitle("Java");
+		System.out.println(b1.getTitle());
+		
+		Book b2 = new Book();
+		b2.setTitle("Java");
+		System.out.println(b2.getTitle());
+		
+		System.out.println("b1 et b2 sont ils identiques? ");
+		System.out.println(b1 == b2);
+		//////////////////////////////////////////////////
+		
+		// TP 2 POO //////////////////////////////////////
+		Publisher p = new Publisher();
+		p.setName("Publisher Random");
+		b2.setPublisher(p);
+		System.out.println(b2.getPublisher().getName());
+		Author a1 = new Author();
+		a1.setFirstName("Albert");
+		a1.setLastName("Nonyme");
+		Author a2 = new Author();
+		a2.setFirstName("Alphonse");
+		a2.setLastName("Nonyme");
+		b2.addAuthor(a1);
+		b2.addAuthor(a2);
+		b2.displayAuthors();
+		//////////////////////////////////////////////////
 	}
 
 	public static int add(int a, int b){
