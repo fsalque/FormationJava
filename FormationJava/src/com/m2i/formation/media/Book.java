@@ -4,11 +4,8 @@ public class Book extends Media{
 	
 	private String[] text;
 	private int nbPages;
-
-
 	private BookCategory category;
 	
-
 	public String[] getText() {
 		return text;
 	}
