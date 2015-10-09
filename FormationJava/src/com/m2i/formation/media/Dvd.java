@@ -11,4 +11,8 @@ public class Dvd extends Media {
 		this.region = region;
 	}
 
+	@Override
+	public double getVATPrice(){
+		return this.getPrice() * 1.20;
+	}
 }

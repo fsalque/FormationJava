@@ -1,7 +1,7 @@
 package com.m2i.formation.media;
 import java.util.Date;
 
-public class Media extends Item {
+public abstract class Media extends Item {
 
 	private Publisher publisher;
 	private Author[] authors = new Author[10];
@@ -14,9 +14,11 @@ public class Media extends Item {
 		this.nbAuthors++;
 	}
 	
-	public void displayAuthors(){
+	public void displayAuthors() throws MediaException{
 		System.out.println("Authors :");
-		
+		if (this.nbAuthors > 10) {
+			throw new MediaException("Too many authors.");
+		}
 		for(int i = 0; i < this.nbAuthors;i++){
 			Author a = this.authors[i];
 			System.out.println(a.getFirstName() + " " + a.getLastName());
@@ -46,4 +48,6 @@ public class Media extends Item {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	
+	public abstract double getVATPrice();
 }

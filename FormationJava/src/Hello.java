@@ -5,7 +5,7 @@ import com.m2i.formation.media.*;
 
 public class Hello {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws MediaException {
 		
 		// TP1 ///////////////////////////////////////////
 		String myText;
@@ -192,8 +192,14 @@ public class Hello {
 			System.out.println(c2.increment());
 		}
 		//////////////////////////////////////////////////
-		// TP POO Enum//////////////////////////////////
+		// TP POO Enum////////////////////////////////////
 		b1.setCategory(BookCategory.SF);
+		//////////////////////////////////////////////////
+		
+		// TP POO Enum////////////////////////////////////
+		Media m = new Book();
+		m.setPrice(10);
+		System.out.println("Price : " + m.getPrice() + "; VATPrice = " + m.getVATPrice());
 		//////////////////////////////////////////////////
 	}
 

@@ -10,5 +10,10 @@ public class Cd extends Media {
 	public void setNbTrack(int nbTrack) {
 		this.nbTrack = nbTrack;
 	}
+	
+	@Override
+	public double getVATPrice(){
+		return this.getPrice() * 1.20;
+	}
 
 }
