@@ -9,16 +9,17 @@ public abstract class Media extends Item {
 	private Date date;
 	private String title;
 	
-	public void addAuthor(Author author){
+	public void addAuthor(Author author) throws MediaException{
+		if (this.nbAuthors > 10) {
+			throw new MediaException("Too many authors.");
+		}
 		this.authors[nbAuthors] = author;
 		this.nbAuthors++;
 	}
 	
-	public void displayAuthors() throws MediaException{
+	public void displayAuthors(){
 		System.out.println("Authors :");
-		if (this.nbAuthors > 10) {
-			throw new MediaException("Too many authors.");
-		}
+
 		for(int i = 0; i < this.nbAuthors;i++){
 			Author a = this.authors[i];
 			System.out.println(a.getFirstName() + " " + a.getLastName());

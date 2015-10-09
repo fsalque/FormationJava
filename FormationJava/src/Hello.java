@@ -5,7 +5,7 @@ import com.m2i.formation.media.*;
 
 public class Hello {
 
-	public static void main(String[] args) throws MediaException {
+	public static void main(String[] args) {
 		
 		// TP1 ///////////////////////////////////////////
 		String myText;
@@ -175,9 +175,14 @@ public class Hello {
 		Author a2 = new Author();
 		a2.setFirstName("Alphonse");
 		a2.setLastName("Nonyme");
-		b2.addAuthor(a1);
-		b2.addAuthor(a2);
-		b2.displayAuthors();
+		try {
+			b2.addAuthor(a1);
+			b2.addAuthor(a2);
+			b2.displayAuthors();
+		} catch (MediaException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		//////////////////////////////////////////////////
 		// TP POO Static//////////////////////////////////
 		for (i = 0; i < 10; i++){
