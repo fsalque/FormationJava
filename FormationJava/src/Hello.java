@@ -1,7 +1,12 @@
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 
 import com.m2i.formation.geometry.Counter;
-import com.m2i.formation.media.*;
+import com.m2i.formation.media.entities.*;
+import com.m2i.formation.media.repositories.BookRepository;
 
 public class Hello {
 
@@ -206,6 +211,93 @@ public class Hello {
 		m.setPrice(10);
 		System.out.println("Price : " + m.getPrice() + "; VATPrice = " + m.getVATPrice());
 		//////////////////////////////////////////////////
+		
+		// TP Collections ////////////////////////////////
+		List<Book> lb = CollectionTest.listTest();
+		Set<Book> sb = CollectionTest.setTest();
+		Map<String, Book> mb = CollectionTest.mapTest();
+		
+		System.out.println("\n listTest books : ");
+		for (Book bAux : lb){
+			System.out.println(bAux.getTitle());
+		}
+		
+		System.out.println("\n setTest books :");
+		for (Book bAux : sb){
+			System.out.println(bAux.getTitle());
+		}
+		
+		System.out.println("\n mapTest books :");
+		for (Book bAux : mb.values()){
+			System.out.println(bAux.getTitle());
+		}
+		//////////////////////////////////////////////////
+		
+		// TP Cart ///////////////////////////////////////
+		
+		Book bCart1 = new Book();
+		Cd cdCart1 = new Cd();
+		Dvd dvdCart1 = new Dvd();
+		bCart1.setCategory(BookCategory.SF);
+		bCart1.setEvaluation(4.8);
+		bCart1.setPrice(150);
+		cdCart1.setPrice(100);
+		dvdCart1.setPrice(50);
+		Cart cart = new Cart();
+		cart.getMedias().add(bCart1);
+		cart.getMedias().add(cdCart1);
+		cart.getMedias().add(dvdCart1);
+		System.out.println("\nCart price : " + cart.getVatPrice());
+		//////////////////////////////////////////////////
+	
+		// TP IO /////////////////////////////////////////
+		try {
+			FileTest.readFile("C:\\Users\\adminlocal\\git\\FormationJava\\ListBooks.csv");
+			List<Book> lbIO = FileTest.readBook("C:\\Users\\adminlocal\\git\\FormationJava\\ListBooks.csv");
+			for(Book bIO : lbIO){
+				System.out.println(bIO.getTitle());
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//////////////////////////////////////////////////
+		
+		// TP Repositories ///////////////////////////////
+		BookRepository bRepo = new BookRepository();
+		bRepo.setUri("C:\\Users\\adminlocal\\git\\FormationJava\\ListBooks.csv");
+		try {
+			System.out.println();
+			System.out.println("All books:");
+			List<Book> lbRepoAll = bRepo.getAll();
+			for(Book b_RepoAux : lbRepoAll){
+				System.out.println(b_RepoAux.getTitle());
+			}
+			System.out.println();
+			System.out.println("Book with ID 1:");
+			Book b_RepoID = bRepo.getByID(1);
+			if (b_RepoID != null){ 
+				System.out.println(b_RepoID.getTitle());
+			}
+			System.out.println();
+			System.out.println("Book with price <=100:");
+			List<Book> lbRepoPrice = bRepo.getByPrice(100);
+			for(Book b_RepoAux : lbRepoPrice){
+				System.out.println(b_RepoAux.getTitle());
+			}
+			System.out.println();
+			System.out.println("Book with title containing front:");
+			List<Book> lbRepoTitle = bRepo.getByTitle("FRONT");
+			for(Book b_RepoAux : lbRepoTitle){
+				System.out.println(b_RepoAux.getTitle());
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//////////////////////////////////////////////////
+		
 	}
 
 	public static int add(int a, int b){
